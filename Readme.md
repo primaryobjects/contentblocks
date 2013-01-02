@@ -34,6 +34,7 @@ app.configure(function(){
 ### web site
 
 Copy the contents of node_modules/contentblocks/scripts into your web site javascript folder. These contain the CMS user interface controls.
+
 Copy the contents of node_modules/contentblocks/css into your web site css folder. These contain the CMS user interface styles.
 
 In your web site footer view (footer.jade, etc), include the scripts and css:
