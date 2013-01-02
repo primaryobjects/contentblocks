@@ -7,6 +7,8 @@ ContentBlocks is a wrapper for the Create.js CMS interface. It allows you to def
 
 ContentBlocks includes a node.js module to pre-render CMS content upon page-load. It also includes pre-defined routes and REST web service integration for saving content back to the CMS. In short, ContentBlocks makes it easy to use the Create.js CMS framework in node.js
 
+## About Create.js
+
 From the Create.js web site @ http://createjs.org
 "Create.js is a comprehensive web editing interface for Content Management Systems. It is designed to provide a modern, fully browser-based HTML5 environment for managing content. Create can be adapted to work on almost any content management backend."
 
@@ -52,13 +54,17 @@ link(rel='stylesheet', href='/css/midgard-notifications/midgardnotif.css')
 Two changes need to be made to point to your own REST web service url for persisting the CMS content:
 
 1. Replace the host and paths in the require('contentBlocks')({ ... }) statement, with your own CMS REST urls. ContentBlocks and Create.js are compatible with any CMS backend system that provides a REST interface (GET/POST/PUT/DELETE) for managing content.
+
 2. Replace the value for "restUrl" in /scripts/contentblock.js to point to your web service "find" method.
 
 For step 1, the paths should be specified as shown below. Use [id] as a placeholder in the url for where the actual content block id will be inserted automatically:
 
 pathFind: web service path to Find method, example: '/v1/nest/find?q={"@subject":"[id]"}'
+
 pathPost: web service path to Insert (POST) method, example: '/v1/nest'
+
 pathPut: web service path to Update (PUT) method, example: '/v1/nest/[id]'
+
 pathDelete: web service path to Delete (DELETE) method, example: '/v1/nest/[id]'
 
 ### Creating a CMS Content Block
