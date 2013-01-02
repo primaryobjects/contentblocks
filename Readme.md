@@ -7,7 +7,7 @@ ContentBlocks is a wrapper for the Create.js CMS interface. It allows you to def
 
 ContentBlocks includes a node.js module to pre-render CMS content upon page-load. It also includes pre-defined routes and REST web service integration for saving content back to the CMS. In short, ContentBlocks makes it easy to use the Create.js CMS framework in node.js
 
-From the Create.js web site:
+From the Create.js web site @ http://createjs.org
 "Create.js is a comprehensive web editing interface for Content Management Systems. It is designed to provide a modern, fully browser-based HTML5 environment for managing content. Create can be adapted to work on almost any content management backend."
 
 ```bash
