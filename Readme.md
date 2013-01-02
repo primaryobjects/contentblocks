@@ -79,13 +79,15 @@ pathDelete: web service path to Delete (DELETE) method, example: '/v1/nest/[id]'
 The following Jade (HTML, etc) markup may be used to indicate editable CMS content blocks:
 
 ```
-	#myContentBlock(style='font-size:10px; color:#000ff;', about='MyContentBlock')
+	#myContentBlock(style='font-size:16px; color:#00000;', about='MyContentBlock')
 		div(property='content')
 			if typeof(MyContentBlock_content) !== 'undefined'
 				span!= MyContentBlock_content
 			else
 				[edit here]
 ```
+
+For more details on available markup, see http://createjs.org/guide/#rdfa
 
 ## Notes
 
