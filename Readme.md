@@ -17,6 +17,9 @@ From the Create.js web site @ http://createjs.org
 "Create.js is a comprehensive web editing interface for Content Management Systems. It is designed to provide a modern, fully browser-based HTML5 environment for managing content. Create can be adapted to work on almost any content management backend."
 
 ## Usage
+
+### app.js
+
 ```
 var contentBlocks = require('contentblocks')({ app: app, host: 'red-ant.herokuapp.com', pathFind: '/v1/nest/find?q={"@subject":"[id]"}', pathPost: '/v1/nest', pathPut: '/v1/nest/[id]', pathDelete: '/v1/nest/[id]' });
 
@@ -26,13 +29,16 @@ app.configure(function(){
   app.use(app.router);
   ...
 });
+```
 
-//
-// Copy the contents of node_modules/contentblocks/scripts into your web site javascript folder. These contain the CMS user interface controls.
-// Copy the contents of node_modules/contentblocks/css into your web site css folder. These contain the CMS user interface styles.
-//
+### web site
 
-// In your web site footer.jade view, include the scripts:
+Copy the contents of node_modules/contentblocks/scripts into your web site javascript folder. These contain the CMS user interface controls.
+Copy the contents of node_modules/contentblocks/css into your web site css folder. These contain the CMS user interface styles.
+
+In your web site footer view (footer.jade, etc), include the scripts and css:
+
+```
 script(src='http://code.jquery.com/ui/1.9.2/jquery-ui.js')
 script(src='/scripts/underscore-min.js')
 script(src='/scripts/backbone-min.js')
