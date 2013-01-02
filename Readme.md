@@ -56,7 +56,7 @@ link(rel='stylesheet', href='/css/create-ui/css/create-ui.css')
 link(rel='stylesheet', href='/css/midgard-notifications/midgardnotif.css')
 ```
 
-### Configuration
+## Configuration
 
 Two changes need to be made to point to your own REST web service url for persisting the CMS content:
 
@@ -74,7 +74,7 @@ pathPut: web service path to Update (PUT) method, example: '/v1/nest/[id]'
 
 pathDelete: web service path to Delete (DELETE) method, example: '/v1/nest/[id]'
 
-### Creating a CMS Content Block
+## Creating a CMS Content Block
 
 The following Jade (HTML, etc) markup may be used to indicate editable CMS content blocks:
 
