@@ -7,14 +7,14 @@ ContentBlocks is a wrapper for the Create.js CMS interface. It allows you to def
 
 ContentBlocks includes a node.js module to pre-render CMS content upon page-load. It also includes pre-defined routes and REST web service integration for saving content back to the CMS. In short, ContentBlocks makes it easy to use the Create.js CMS framework in node.js
 
+```bash
+$ npm install contentblocks
+```
+
 ## About Create.js
 
 From the Create.js web site @ http://createjs.org
 "Create.js is a comprehensive web editing interface for Content Management Systems. It is designed to provide a modern, fully browser-based HTML5 environment for managing content. Create can be adapted to work on almost any content management backend."
-
-```bash
-$ npm install contentblocks
-```
 
 ## Usage
 ```
@@ -68,6 +68,9 @@ pathPut: web service path to Update (PUT) method, example: '/v1/nest/[id]'
 pathDelete: web service path to Delete (DELETE) method, example: '/v1/nest/[id]'
 
 ### Creating a CMS Content Block
+
+The following Jade (HTML, etc) markup may be used to indicate editable CMS content blocks:
+
 ```
 	#myContentBlock(style='font-size:10px; color:#000ff;', about='MyContentBlock')
 		div(property='content')
