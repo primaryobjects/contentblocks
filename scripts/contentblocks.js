@@ -4,6 +4,7 @@
 // Example: http://your.service.com/api/findById?id=[id]
 //
 var restUrl = 'http://red-ant.herokuapp.com/v1/nest/find?q={"@subject": "[id]"}';
+var apiKey = 'ykwLDRspn5XgZPkO'; // Unique key for the demo REST web service, red-ant.herokuapp.com. If you use the demo service, change this key to be unique.
 
 $(document).ready(function () {
 	$('body').midgardCreate({
@@ -37,7 +38,9 @@ $(document).ready(function () {
 
 // Fake Backbone.sync since there is no server to communicate with
 Backbone.sync = function(method, model, options) {
-	if (method == 'create') {
+    model.apiKey = apiKey;
+
+    if (method == 'create') {
 	    $.ajax({
 	        url: '/create',
 	        type: 'POST',
@@ -50,7 +53,6 @@ Backbone.sync = function(method, model, options) {
 	    });
 	}
 	else if (method == 'read') {
-	    alert(model.id);
 	}
 	else if (method == 'update') {		
 		$.ajax({

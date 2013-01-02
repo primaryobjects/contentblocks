@@ -47,14 +47,19 @@ link(rel='stylesheet', href='/css/create-ui/css/create-ui.css')
 link(rel='stylesheet', href='/css/midgard-notifications/midgardnotif.css')
 ```
 
-Note, replace the host and paths in contentBlocks.render with your own CMS REST urls. ContentBlocks and Create.js is compatible with any CMS backend system that provides a REST interface (GET/POST/PUT/DELETE) for managing content.
+### Configuration
 
-The paths should be specified, as shown below. Use [id] as a placeholder in the url for where the actual content block id will be inserted by ContentBlocks:
+Two changes need to be made to point to your own REST web service url for persisting the CMS content:
 
-pathFind: web service path to Find method
-pathPost: web service path to Insert (POST) method
-pathPut: web service path to Update (PUT) method
-pathDelete: web service path to Delete (DELETE) method
+1. Replace the host and paths in the require('contentBlocks')({ ... }) statement, with your own CMS REST urls. ContentBlocks and Create.js are compatible with any CMS backend system that provides a REST interface (GET/POST/PUT/DELETE) for managing content.
+2. Replace the value for "restUrl" in /scripts/contentblock.js to point to your web service "find" method.
+
+For step 1, the paths should be specified as shown below. Use [id] as a placeholder in the url for where the actual content block id will be inserted automatically:
+
+pathFind: web service path to Find method, example: '/v1/nest/find?q={"@subject":"[id]"}'
+pathPost: web service path to Insert (POST) method, example: '/v1/nest'
+pathPut: web service path to Update (PUT) method, example: '/v1/nest/[id]'
+pathDelete: web service path to Delete (DELETE) method, example: '/v1/nest/[id]'
 
 ### Creating a CMS Content Block
 ```
