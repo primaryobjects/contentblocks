@@ -1,0 +1,42 @@
+{
+  "name": "contentblocks",
+  "version": "0.1.0",
+  "description": "Create simple editable CMS content blocks in node.js. Wrapper for Create.js CMS framework.",
+  "author": {
+    "name": "Kory Becker",
+    "email": "kbecker@primaryobjects.com",
+    "url": "http://www.primaryobjects.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/primaryobjects/contentblocks.git"
+  },
+  "main": "./lib",
+  "dependencies": {},
+  "engines": {
+    "node": ">= 0.8.x",
+	"cheerio": "*",
+	"easypost": "*",
+	"http": "*"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "keywords": [
+    "cms",
+    "create.js",
+    "create js",
+    "create",
+    "contentblocks",
+	"content blocks",
+	"content management",
+	"content management system",
+	"hallo",
+	"aloha"
+  ],
+  "_id": "contentblocks@0.1.0",
+  "_from": "contentblocks"
+}
