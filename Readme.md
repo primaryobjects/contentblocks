@@ -7,6 +7,8 @@ ContentBlocks is a wrapper for the Create.js CMS interface. It allows you to def
 
 ContentBlocks includes a node.js module to pre-render CMS content upon page-load. It also includes pre-defined routes and REST web service integration for saving content back to the CMS. In short, ContentBlocks makes it easy to use the Create.js CMS framework in node.js
 
+Demo http://contentblocks.herokuapp.com
+
 ```bash
 $ npm install contentblocks
 ```
