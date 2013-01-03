@@ -101,3 +101,6 @@ You are welcome to use the demo REST web service url (red-ant.herokuapp.com, whi
 
 Kory Becker
 http://www.primaryobjects.com
+
+View @ GitHub
+https://github.com/primaryobjects/contentblocks
