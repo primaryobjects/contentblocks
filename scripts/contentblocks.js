@@ -6,6 +6,7 @@
 var restUrl = 'http://red-ant.herokuapp.com/v1/nest/find?q={"@subject": "[id]"}';
 var apiKey = 'ykwLDRspn5XgZPkO'; // Unique key for the demo REST web service, red-ant.herokuapp.com. If you use the demo service, change this key to be unique. If using your own service, you can leave this blank.
 var editor = 'aloha'; // Editor can be aloha or hallo.
+var loaded = false;
 
 $(document).ready(function () {
 	if (editor == 'aloha') {
@@ -141,16 +142,20 @@ CommonManager = {
         if (apiKey.length > 0) {
             model['apiKey'] = apiKey;
 
-            // Copy original stringify method.
-            model.toJSONOld = model.toJSON;
+			if (!loaded) {
+				// Copy original stringify method.
+				model.toJSONOld = model.toJSON;
 
-            // Override method to include apiKey.
-            model.toJSON = function () {
-                var j = model.toJSONOld();
-                j.apiKey = model.apiKey;
+				// Override method to include apiKey.
+				model.toJSON = function () {
+					var j = model.toJSONOld();
+					j.apiKey = model.apiKey;
 
-                return j;
-            }
+					return j;
+				}
+				
+				loaded = true;
+			}
         }
     }
 };
