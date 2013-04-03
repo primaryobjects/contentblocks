@@ -51,9 +51,12 @@ script(src='/scripts/jquery.rdfquery.min.js')
 script(src='/scripts/annotate-min.js')
 script(src='/scripts/rangy-core-1.2.3.js')
 script(src='/scripts/hallo-min.js')
+script(src='/scripts/aloha/lib/require.js')
+script(src='/scripts/aloha/lib/aloha-full.min.js', data-aloha-plugins='common/ui,common/format,common/link,common/image,extra/sourceview')
 script(src='/scripts/create-min.js')
 script(src='/scripts/contentblocks.js')
 
+link(rel='stylesheet', href='http://cdn.aloha-editor.org/latest/css/aloha.css')
 link(rel='stylesheet', href='/css/create-ui/css/create-ui.css')
 link(rel='stylesheet', href='/css/midgard-notifications/midgardnotif.css')
 ```
