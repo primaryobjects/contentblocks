@@ -5,18 +5,42 @@
 //
 var restUrl = 'http://red-ant.herokuapp.com/v1/nest/find?q={"@subject": "[id]"}';
 var apiKey = 'ykwLDRspn5XgZPkO'; // Unique key for the demo REST web service, red-ant.herokuapp.com. If you use the demo service, change this key to be unique. If using your own service, you can leave this blank.
+var editor = 'aloha'; // Editor can be aloha or hallo.
 
 $(document).ready(function () {
-    $('body').midgardCreate({
-        metadata: {
-            midgardTags: {}
-        },
-        collectionWidgets: {
-            'default': 'midgardCollectionAdd',
-            'skos:related': null
-        }
-    });
-
+	if (editor == 'aloha') {
+		// Enable Aloha editor.
+		$('body').midgardCreate({
+			// Use Aloha for all text editing
+			editorWidgets: {
+			  'default': 'aloha'
+			},
+			editorOptions: {
+			  aloha: {
+				widget: 'alohaWidget'
+			  }
+			},
+			collectionWidgets: {
+			  'default': null,
+			  'feature': 'midgardCollectionAdd'
+			},
+			state: 'edit'
+		});
+	}
+	else {
+		// Enable Hallo editor.
+		$('body').midgardCreate({
+			metadata: {
+				midgardTags: {}
+			},
+			collectionWidgets: {
+				'default': 'midgardCollectionAdd',
+				'skos:related': null
+			},
+			state: 'edit'
+		});
+	}
+	
     // Set a simpler editor for title fields
     $('body').midgardCreate('configureEditor', 'title', 'halloWidget', {
         plugins: {
