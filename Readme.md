@@ -87,7 +87,7 @@ The following Jade (HTML, etc) markup may be used to indicate editable CMS conte
 	#myContentBlock(style='font-size:16px; color:#00000;', about='MyContentBlock')
 		div(property='content')
 			if typeof(MyContentBlock_content) !== 'undefined'
-				span!= MyContentBlock_content
+				!= MyContentBlock_content
 			else
 				[edit here]
 ```
