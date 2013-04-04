@@ -15,11 +15,11 @@
   "dependencies": {
 	"cheerio": "*",
 	"easypost": "*",
-	"memory-cache": "*"
+	"memory-cache": "*",
+	"http": "*"
   },
   "engines": {
-    "node": ">= 0.8.x",
-	"http": "*"
+    "node": ">= 0.8.x"
   },
   "licenses": [
     {
