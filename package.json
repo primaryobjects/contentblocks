@@ -1,6 +1,6 @@
 {
   "name": "contentblocks",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Create simple editable CMS content blocks in node.js. Wrapper for Create.js CMS framework.",
   "author": {
     "name": "Kory Becker",
@@ -17,7 +17,8 @@
     "node": ">= 0.8.x",
 	"cheerio": "*",
 	"easypost": "*",
-	"http": "*"
+	"http": "*",
+	"node-cache": "*"
   },
   "licenses": [
     {
@@ -37,6 +38,6 @@
 	"hallo",
 	"aloha"
   ],
-  "_id": "contentblocks@0.1.1",
+  "_id": "contentblocks@0.1.2",
   "_from": "contentblocks"
 }
