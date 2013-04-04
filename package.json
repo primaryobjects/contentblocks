@@ -12,13 +12,14 @@
     "url": "git://github.com/primaryobjects/contentblocks.git"
   },
   "main": "./lib",
-  "dependencies": {},
-  "engines": {
-    "node": ">= 0.8.x",
+  "dependencies": {
 	"cheerio": "*",
 	"easypost": "*",
-	"http": "*",
 	"memory-cache": "*"
+  },
+  "engines": {
+    "node": ">= 0.8.x",
+	"http": "*"
   },
   "licenses": [
     {
