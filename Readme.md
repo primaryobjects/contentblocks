@@ -94,6 +94,54 @@ The following Jade (HTML, etc) markup may be used to indicate editable CMS conte
 
 For more details on available markup, see http://createjs.org/guide/#rdfa
 
+## Showing the Controls to Administrator Users Only
+
+To restrict editing of the CMS content to specific users, you can use a url parameter to enable and disable the CMS controls. For example, the following url (containing the parameter admin=1) could allow editing of the CMS blocks on the page:
+
+```
+http://localhost:3000/?admin=1
+```
+
+To do this, first wrap your script and css references in an if/then block, as shown below. This could be placed in your footer.jade file:
+
+```
+if isAdmin
+	script(src='http://code.jquery.com/ui/1.9.2/jquery-ui.js')
+	script(src='/scripts/underscore-min.js')
+	script(src='/scripts/backbone-min.js')
+	script(src='/scripts/vie-min.js')
+	script(src='/scripts/jquery.tagsinput.min.js')
+	script(src='/scripts/jquery.rdfquery.min.js')
+	script(src='/scripts/annotate-min.js')
+	script(src='/scripts/rangy-core-1.2.3.js')
+	script(src='/scripts/hallo-min.js')
+	script(src='/scripts/aloha/lib/require.js')
+	script(src='/scripts/aloha/lib/aloha-full.min.js', data-aloha-plugins='common/ui,common/format,common/link,common/image,extra/sourceview')
+	script(src='/scripts/create-min.js')
+	script(src='/scripts/contentblocks.js')
+
+	link(rel='stylesheet', href='http://cdn.aloha-editor.org/latest/css/aloha.css')
+	link(rel='stylesheet', href='/css/create-ui/css/create-ui.css')
+	link(rel='stylesheet', href='/css/midgard-notifications/midgardnotif.css')
+```
+
+Next, in the route for your view, include a value for isAdmin, indicating if the current user should be able to edit the CMS blocks, as follows:
+
+```
+var remoteip = require('remoteip');
+
+exports.index = function (req, res) {
+    res.render('index', { isAdmin: isCurrentUserAdministrator(req) });
+};
+
+function isCurrentUserAdministrator(req) {
+	var adminIp = remoteip.get(req);
+	return ((adminIp == '123.456.789.012' || adminIp == '127.0.0.1') && req.query['admin'] == '1');
+}
+```
+
+That's it! If you load the page without the url parameter, you should not see the CMS controls. If you add the parameter admin=1 to the url, you should see the controls displayed.
+
 ## Notes
 
 After setup, refresh your web page and you should see the Create.js toolbar along the top of the page. Click Edit to begin editing the content and click Save to save the content to the CMS. Upon clicking Save, the ContentBlocks module will call the REST web service url that you defined in the setup in order to persist the content to the CMS database.
