@@ -89,7 +89,7 @@ The following Jade (HTML, etc) markup may be used to indicate editable CMS conte
 			if typeof(MyContentBlock_content) !== 'undefined'
 				!= MyContentBlock_content
 			else
-				[edit here]
+				| [edit here]
 ```
 
 For more details on available markup, see http://createjs.org/guide/#rdfa
