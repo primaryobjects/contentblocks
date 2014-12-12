@@ -23,14 +23,10 @@ From the Create.js web site @ http://createjs.org
 ### app.js
 
 ```
+var app = express();
 var contentBlocks = require('contentblocks')({ app: app, host: 'red-ant.herokuapp.com', pathFind: '/v1/nest/find?q={"@subject":"[id]"}', pathPost: '/v1/nest', pathPut: '/v1/nest/[id]', pathDelete: '/v1/nest/[id]' });
 
-app.configure(function(){
-  ...
-  app.use(contentBlocks.render); // Place this line BEFORE app.use(app.router) as it needs to pre-render content.
-  app.use(app.router);
-  ...
-});
+app.use(contentBlocks.render); // Place this line in your app.use() section, so it can pre-render content.
 ```
 
 ### web site
@@ -89,7 +85,7 @@ The following Jade (HTML, etc) markup may be used to indicate editable CMS conte
 			if typeof(MyContentBlock_content) !== 'undefined'
 				!= MyContentBlock_content
 			else
-				[edit here]
+				| [edit here]
 ```
 
 For more details on available markup, see http://createjs.org/guide/#rdfa
