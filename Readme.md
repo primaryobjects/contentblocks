@@ -102,7 +102,7 @@ var contentBlocks = require('contentblocks')({ app: app, host: 'localhost', port
 var cms = require('./routes/cms');
 ```
 
-5. In [app.js](https://github.com/primaryobjects/contentblocks-demo/blob/localhost/app.js#L33), add routes for the CMS calls:
+5. In [app.js](https://github.com/primaryobjects/contentblocks-demo/blob/localhost/app.js#L33-L38), add routes for the CMS calls:
 ```
 // REST API routes.
 app.get('/cms/find', cms.find);
