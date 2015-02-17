@@ -82,24 +82,27 @@ If you are not using a remote REST service to store your CMS data, you can inste
 
 To do this, make the following changes:
 
-1. In scripts/contentblocks.js, set the value for "restUrl" to point to localhost, For example:
+1. In [scripts/contentblocks.js](https://github.com/primaryobjects/contentblocks-demo/blob/localhost/public/scripts/contentblocks.js#L6), set the value for "restUrl" to point to localhost, For example:
+```
 var restUrl = 'http://localhost:3000/cms/find?q={"@subject": "[id]"}';
+```
 
-2. In scripts/contentblocks.js line 87, change the dataType from "jsonp" to "json":
+2. In [scripts/contentblocks.js](https://github.com/primaryobjects/contentblocks-demo/blob/localhost/public/scripts/contentblocks.js#L84) line 84, change the dataType from "jsonp" to "json":
+```
 dataType: 'json',
-...
+```
 
-3. In your app.js, set the contentBlocks initialization line to point to localhost. For example:
+3. In your [app.js](https://github.com/primaryobjects/contentblocks-demo/blob/localhost/app.js#L16), set the contentBlocks initialization line to point to localhost. For example:
 ```
 var contentBlocks = require('contentblocks')({ app: app, host: 'localhost', port: 3000, pathFind: '/cms/find?q={"@subject":"[id]"}', pathPost: '/cms', pathPut: '/cms/[id]', pathDelete: '/cms/[id]' });
 ```
 
-4. In app.js, at the top of the file, add a line to include your routes code:
+4. In [app.js](https://github.com/primaryobjects/contentblocks-demo/blob/localhost/app.js#L8), at the top of the file, add a line to include your routes code:
 ```
 var cms = require('./routes/cms');
 ```
 
-5. In app.js, add routes for the CMS calls:
+5. In [app.js](https://github.com/primaryobjects/contentblocks-demo/blob/localhost/app.js#L33), add routes for the CMS calls:
 ```
 // REST API routes.
 app.get('/cms/find', cms.find);
@@ -109,7 +112,7 @@ app.delete('/cms/:itemId', cms.delete);
 app.post('/cms', cms.insert);
 ```
 
-6. Create a folder under /routes/cms, with a file index.js, that will contain your route controller code. These methods will respond to the get, post, put, delete to load data from your database. See the [ContentBlocks Demo](https://github.com/primaryobjects/contentblocks-demo/tree/localhost) for a working example.
+6. Create a folder under /routes/cms, with a file [index.js](https://github.com/primaryobjects/contentblocks-demo/blob/localhost/routes/cms/index.js), that will contain your route controller code. These methods will respond to the get, post, put, delete to load data from your database. See the ContentBlocks Demo [localhost](https://github.com/primaryobjects/contentblocks-demo/tree/localhost) for a complete working example.
 
 ## Creating a CMS Content Block
 
