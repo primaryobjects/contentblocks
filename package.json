@@ -1,11 +1,11 @@
 {
   "name": "contentblocks",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Create simple editable CMS content blocks in node.js. Wrapper for Create.js CMS framework.",
   "author": {
     "name": "Kory Becker",
     "email": "kbecker@primaryobjects.com",
-    "url": "http://www.primaryobjects.com"
+    "url": "http://www.primaryobjects.com/kory-becker"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,6 @@
 	"hallo",
 	"aloha"
   ],
-  "_id": "contentblocks@0.1.5",
+  "_id": "contentblocks@0.1.6",
   "_from": "contentblocks"
 }

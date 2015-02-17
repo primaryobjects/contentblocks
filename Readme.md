@@ -8,6 +8,7 @@ ContentBlocks is a wrapper for the Create.js CMS interface. It allows you to def
 ContentBlocks includes a node.js module to pre-render CMS content upon page-load. It also includes pre-defined routes and REST web service integration for saving content back to the CMS. In short, ContentBlocks makes it easy to use the Create.js CMS framework in node.js
 
 Demo http://contentblocks.herokuapp.com
+Demo Source https://github.com/primaryobjects/contentblocks-demo
 
 ```bash
 $ npm install contentblocks
@@ -24,7 +25,7 @@ From the Create.js web site @ http://createjs.org
 
 ```
 var app = express();
-var contentBlocks = require('contentblocks')({ app: app, host: 'red-ant.herokuapp.com', pathFind: '/v1/nest/find?q={"@subject":"[id]"}', pathPost: '/v1/nest', pathPut: '/v1/nest/[id]', pathDelete: '/v1/nest/[id]' });
+var contentBlocks = require('contentblocks')({ app: app, host: 'red-ant.herokuapp.com', port: 80, pathFind: '/v1/nest/find?q={"@subject":"[id]"}', pathPost: '/v1/nest', pathPut: '/v1/nest/[id]', pathDelete: '/v1/nest/[id]' });
 
 app.use(contentBlocks.render); // Place this line in your app.use() section, so it can pre-render content.
 ```
@@ -63,7 +64,7 @@ Two changes need to be made to point to your own REST web service url for persis
 
 1. Replace the host and paths in the require('contentBlocks')({ ... }) statement, with your own CMS REST urls. ContentBlocks and Create.js are compatible with any CMS backend system that provides a REST interface (GET/POST/PUT/DELETE) for managing content.
 
-2. Replace the value for "restUrl" in /scripts/contentblock.js to point to your web service "find" method.
+2. Replace the value for "restUrl" in /scripts/contentblocks.js to point to your web service "find" method.
 
 For step 1, the paths should be specified as shown below. Use [id] as a placeholder in the url for where the actual content block id will be inserted automatically:
 
@@ -74,6 +75,41 @@ pathPost: web service path to Insert (POST) method, example: '/v1/nest'
 pathPut: web service path to Update (PUT) method, example: '/v1/nest/[id]'
 
 pathDelete: web service path to Delete (DELETE) method, example: '/v1/nest/[id]'
+
+## Configuration for localhost REST Service
+
+If you are not using a remote REST service to store your CMS data, you can instead have contentblocks post back to your local app to load and save content blocks. For a working example, see the ContentBlocks Demo on [localhost](https://github.com/primaryobjects/contentblocks-demo/tree/localhost).
+
+To do this, make the following changes:
+
+1. In scripts/contentblocks.js, set the value for "restUrl" to point to localhost, For example:
+var restUrl = 'http://localhost:3000/cms/find?q={"@subject": "[id]"}';
+
+2. In scripts/contentblocks.js line 87, change the dataType from "jsonp" to "json":
+dataType: 'json',
+...
+
+3. In your app.js, set the contentBlocks initialization line to point to localhost. For example:
+```
+var contentBlocks = require('contentblocks')({ app: app, host: 'localhost', port: 3000, pathFind: '/cms/find?q={"@subject":"[id]"}', pathPost: '/cms', pathPut: '/cms/[id]', pathDelete: '/cms/[id]' });
+```
+
+4. In app.js, at the top of the file, add a line to include your routes code:
+```
+var cms = require('./routes/cms');
+```
+
+5. In app.js, add routes for the CMS calls:
+```
+// REST API routes.
+app.get('/cms/find', cms.find);
+app.get('/cms/:itemId', cms.get);
+app.put('/cms/:itemId', cms.update);
+app.delete('/cms/:itemId', cms.delete);
+app.post('/cms', cms.insert);
+```
+
+6. Create a folder under /routes/cms, with a file index.js, that will contain your route controller code. These methods will respond to the get, post, put, delete to load data from your database. See the [ContentBlocks Demo](https://github.com/primaryobjects/contentblocks-demo/tree/localhost) for a working example.
 
 ## Creating a CMS Content Block
 
