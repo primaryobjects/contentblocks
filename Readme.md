@@ -54,7 +54,11 @@ script(src='/scripts/aloha/lib/aloha-full.min.js', data-aloha-plugins='common/ui
 script(src='/scripts/create-min.js')
 script(src='/scripts/contentblocks.js')
 
-link(rel='stylesheet', href='http://cdn.aloha-editor.org/latest/css/aloha.css')
+link(rel='stylesheet', href='/css/aloha/css/aloha.css')
+link(rel='stylesheet', href='/css/aloha/css/aloha-common-extra.css')
+link(rel='stylesheet', href='/css/aloha/css/aloha-core.css')
+link(rel='stylesheet', href='/css/aloha/css/aloha-reset.css')
+link(rel='stylesheet', href='/css/aloha/css/aloha-sidebar.css')
 link(rel='stylesheet', href='/css/create-ui/css/create-ui.css')
 link(rel='stylesheet', href='/css/midgard-notifications/midgardnotif.css')
 ```
@@ -120,12 +124,12 @@ app.post('/cms', cms.insert);
 The following Jade (HTML, etc) markup may be used to indicate editable CMS content blocks:
 
 ```
-	#myContentBlock(style='font-size:16px; color:#00000;', about='MyContentBlock')
-		div(property='content')
-			if typeof(MyContentBlock_content) !== 'undefined'
-				!= MyContentBlock_content
-			else
-				| [edit here]
+    #myContentBlock(style='font-size:16px; color:#00000;', about='MyContentBlock')
+        div(property='content')
+            if typeof(MyContentBlock_content) !== 'undefined'
+                != MyContentBlock_content
+            else
+                | [edit here]
 ```
 
 For more details on available markup, see http://createjs.org/guide/#rdfa
@@ -142,23 +146,27 @@ To do this, first wrap your script and css references in an if/then block, as sh
 
 ```
 if isAdmin
-	script(src='http://code.jquery.com/ui/1.9.2/jquery-ui.js')
-	script(src='/scripts/underscore-min.js')
-	script(src='/scripts/backbone-min.js')
-	script(src='/scripts/vie-min.js')
-	script(src='/scripts/jquery.tagsinput.min.js')
-	script(src='/scripts/jquery.rdfquery.min.js')
-	script(src='/scripts/annotate-min.js')
-	script(src='/scripts/rangy-core-1.2.3.js')
-	script(src='/scripts/hallo-min.js')
-	script(src='/scripts/aloha/lib/require.js')
-	script(src='/scripts/aloha/lib/aloha-full.min.js', data-aloha-plugins='common/ui,common/format,common/link,common/image,extra/sourceview')
-	script(src='/scripts/create-min.js')
-	script(src='/scripts/contentblocks.js')
+    script(src='http://code.jquery.com/ui/1.9.2/jquery-ui.js')
+    script(src='/scripts/underscore-min.js')
+    script(src='/scripts/backbone-min.js')
+    script(src='/scripts/vie-min.js')
+    script(src='/scripts/jquery.tagsinput.min.js')
+    script(src='/scripts/jquery.rdfquery.min.js')
+    script(src='/scripts/annotate-min.js')
+    script(src='/scripts/rangy-core-1.2.3.js')
+    script(src='/scripts/hallo-min.js')
+    script(src='/scripts/aloha/lib/require.js')
+    script(src='/scripts/aloha/lib/aloha-full.min.js', data-aloha-plugins='common/ui,common/format,common/link,common/image,extra/sourceview')
+    script(src='/scripts/create-min.js')
+    script(src='/scripts/contentblocks.js')
 
-	link(rel='stylesheet', href='http://cdn.aloha-editor.org/latest/css/aloha.css')
-	link(rel='stylesheet', href='/css/create-ui/css/create-ui.css')
-	link(rel='stylesheet', href='/css/midgard-notifications/midgardnotif.css')
+    link(rel='stylesheet', href='/css/aloha/css/aloha.css')
+    link(rel='stylesheet', href='/css/aloha/css/aloha-common-extra.css')
+    link(rel='stylesheet', href='/css/aloha/css/aloha-core.css')
+    link(rel='stylesheet', href='/css/aloha/css/aloha-reset.css')
+    link(rel='stylesheet', href='/css/aloha/css/aloha-sidebar.css')
+    link(rel='stylesheet', href='/css/create-ui/css/create-ui.css')
+    link(rel='stylesheet', href='/css/midgard-notifications/midgardnotif.css')
 ```
 
 Next, in the route for your view, include a value for isAdmin, indicating if the current user should be able to edit the CMS blocks, as follows:
@@ -171,8 +179,8 @@ exports.index = function (req, res) {
 };
 
 function isCurrentUserAdministrator(req) {
-	var adminIp = remoteip.get(req);
-	return ((adminIp == '123.456.789.012' || adminIp == '127.0.0.1') && req.query['admin'] == '1');
+    var adminIp = remoteip.get(req);
+    return ((adminIp == '123.456.789.012' || adminIp == '127.0.0.1') && req.query['admin'] == '1');
 }
 ```
 
